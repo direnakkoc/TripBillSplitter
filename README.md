@@ -9,25 +9,36 @@
 
 Integrated assignment Cloud Based Web Application, Algorithms & Constructs and Mobile Development
 
-<!-- About The Project -->
+<!-- Getting Start -->
 ## :pushpin: Getting Started
 
 An exemplary project for **Bill Splitter**, which is prepared with N-Layered architecture, CRUD operations are performed using In-Memory Database and works with the React-Native framework.
 
+<!-- Layers-->
+## :books: Layers
+
+### Entities Layer
+It is the layer where you will represent the database assets of your project, and where you will define these entities as relational database or document-oriented database objects.
+This layer is the first entry point during a project development phase. All layers are shaped over a class created here.
+I created 3 entities which are User, Trip, and Expense. Additionally, I have an ExpenseDetail class to demonstrate the details of expenses.
+
+### Core
+This layer is Cross-Cutting Concern, Generic Repository, JWT, Mail, RabbitMQ, Elastic Search, etc. It includes all core systems of the project's infrastructure. It is the layer where the structures are presented as ready-made with AOP methods and/or single-line codes. such as Cross-Cutting Concern, Generic Repository, JWT, Mail, RabbitMQ, Elastic Search, etc. It is a changeable layer according to the project needs.
+
+### Data Access
+It is the data access layer of your project. This layer is the layer where database relationships are made, Contexts are determined and database access technologies (Postgresql, MongoDB, memory, etc.) are used.
+I stored my data in memory as has been requested by my teachers.
+
+### Business
+It is the layer where all business rules of your project will be written and integration mechanisms will be placed.
+
+### Controller
+It is the API surface layer where your project will communicate with Front-End Frameworks. In this project, communication provides with the React-Native Framework.
+
 <!-- Photos of the Components -->
 ## Overview
 
-<p align="center">
-  <img src="https://github.com/direnakkocdemir/gryffindor/blob/master/assets/AboutUs.png" alt="AboutUsOverview">
-  </p>
 
-<p align="center">
-  <img src="https://github.com/direnakkocdemir/gryffindor/blob/master/assets/Camera.png" alt="CameraOverview>
-  </p>
-
-<p align="center">
-  <img src="https://github.com/direnakkocdemir/gryffindor/blob/master/assets/Album.png" alt="AlbumOverview">
-  </p>
 
 <!-- Getting Start-->
 ## Getting Start
