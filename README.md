@@ -51,7 +51,7 @@ It is the API surface layer where your project will communicate with Front-End F
 </p>
 
 <!-- Getting Start-->
-## :dance: Getting Start
+## :fire: Getting Start
 
 ### Prerequisites
 This project will present the implementation of the TripApplication with the help of;
@@ -83,8 +83,22 @@ npm install react-native-vector-icons/FontAwesome
 ```
 
 <!-- Photos of the Components -->
-## :computer: Overview
-
+## :mag_right: Overview
+<p align="center">
+    <img src="https://github.com/direnakkocdemir/TripBillSplitter/blob/main/ReadMeImages/overview1.png" alt="Overview">
+</p>
+<p align="center">
+    <img src="https://github.com/direnakkocdemir/TripBillSplitter/blob/main/ReadMeImages/overview2.png" alt="Overview">
+</p>
+<p align="center">
+    <img src="https://github.com/direnakkocdemir/TripBillSplitter/blob/main/ReadMeImages/overview3.png" alt="Overview">
+</p>
+<p align="center">
+    <img src="https://github.com/direnakkocdemir/TripBillSplitter/blob/main/ReadMeImages/overview4.png" alt="Overview">
+</p>
+<p align="center">
+    <img src="https://github.com/direnakkocdemir/TripBillSplitter/blob/main/ReadMeImages/overview5.png" alt="Overview">
+</p>
 
 ## :pencil2: Creater 
  Have you have any question?
