@@ -21,19 +21,34 @@ An exemplary project for **Bill Splitter**, which is prepared with N-Layered arc
 It is the layer where you will represent the database assets of your project, and where you will define these entities as relational database or document-oriented database objects.
 This layer is the first entry point during a project development phase. All layers are shaped over a class created here.
 I created 3 entities which are User, Trip, and Expense. Additionally, I have an ExpenseDetail class to demonstrate the details of expenses.
+<p align="center">
+    <img src="https://github.com/direnakkocdemir/TripBillSplitter/blob/main/ReadMeImages/entities.png" alt="Entities">
+</p>
 
 ### Core
 This layer is Cross-Cutting Concern, Generic Repository, JWT, Mail, RabbitMQ, Elastic Search, etc. It includes all core systems of the project's infrastructure. It is the layer where the structures are presented as ready-made with AOP methods and/or single-line codes. such as Cross-Cutting Concern, Generic Repository, JWT, Mail, RabbitMQ, Elastic Search, etc. It is a changeable layer according to the project needs.
+<p align="center">
+    <img src="https://github.com/direnakkocdemir/TripBillSplitter/blob/main/ReadMeImages/core.png" alt="Core">
+</p>
 
 ### Data Access
 It is the data access layer of your project. This layer is the layer where database relationships are made, Contexts are determined and database access technologies (Postgresql, MongoDB, memory, etc.) are used.
 I stored my data in memory as has been requested by my teachers.
+<p align="center">
+    <img src="https://github.com/direnakkocdemir/TripBillSplitter/blob/main/ReadMeImages/dataAccess.png" alt="DataAccess">
+</p>
 
 ### Business
 It is the layer where all business rules of your project will be written and integration mechanisms will be placed.
+<p align="center">
+    <img src="https://github.com/direnakkocdemir/TripBillSplitter/blob/main/ReadMeImages/business.png" alt="Business">
+</p>
 
 ### Controller
 It is the API surface layer where your project will communicate with Front-End Frameworks. In this project, communication provides with the React-Native Framework.
+<p align="center">
+    <img src="https://github.com/direnakkocdemir/TripBillSplitter/blob/main/ReadMeImages/controller.png" alt="Controller">
+</p>
 
 <!-- Photos of the Components -->
 ## Overview
