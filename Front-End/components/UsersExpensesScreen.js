@@ -25,7 +25,6 @@ export default function UsersExpensesScreen({ route, navigation }) {
   /** When page opens, useEffect renders and brings all of the user's expenses */
   useEffect(() => {
     getExpenses();
-    LogBox.ignoreAllLogs(); //Hiding yellow warning message :) which was given on phone
   }, []);
   /** function for sending user to Expense adding page with token and username */
   function addExpense() {
@@ -47,7 +46,7 @@ export default function UsersExpensesScreen({ route, navigation }) {
   }
   /** function to get all the expenses for user */
   function getExpenses() {
-    fetch("http://192.168.1.3:8080/expenses/" + username + "/user", {
+    fetch("http://localhost:8080/expenses/" + username + "/user", {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,
@@ -62,7 +61,7 @@ export default function UsersExpensesScreen({ route, navigation }) {
   /** function for deleting expense */
   /** If user click the delete which is in the list, function sends expense id and tripname to delete the expense */
   function deleteExpense(id, tripname) {
-    fetch("http://192.168.1.3:8080/expense/delete/" + id + "/" + tripname, {
+    fetch("http://localhost:8080/expense/delete/" + id + "/" + tripname, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

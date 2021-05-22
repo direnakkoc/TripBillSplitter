@@ -20,7 +20,7 @@ export default function TripAddScreen({ route, navigation }) {
     /** If tripname is empty , function does not work. */
     /** Putting url in the fetch and sending it with body and with token in the header */
     if (tripName) {
-      fetch("http://192.168.1.3:8080/trip/add", {
+      fetch("http://localhost:8080/trip/add", {
         method: "POST", //This is a Post request
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +42,7 @@ export default function TripAddScreen({ route, navigation }) {
     /** If tripname is empty , function does not work. */
     /** Putting url in the fetch and sending it with body and with token in the header */
     if (tripName) {
-      fetch("http://192.168.1.3:8080/" + tripName + "/join/" + username, {
+      fetch("http://localhost:8080/" + tripName + "/join/" + username, {
         method: "POST", //This is a Post request
         headers: {
           "Content-Type": "application/json",

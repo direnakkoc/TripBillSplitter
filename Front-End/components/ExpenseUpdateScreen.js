@@ -37,7 +37,7 @@ export default function ExpenseUpdateScreen({ route, navigation }) {
       user: { username: username },
     };
     /** Putting url in the fetch and sending it with body to update with token in the header */
-    fetch("http://192.168.1.3:8080/expense/update", {
+    fetch("http://localhost:8080/expense/update", {
       method: "POST", //This is a Post request
       headers: {
         "Content-Type": "application/json",

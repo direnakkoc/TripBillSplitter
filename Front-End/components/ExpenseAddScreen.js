@@ -28,7 +28,7 @@ export default function ExpenseAddScreen({ route, navigation }) {
     /** If there is any empty parameter, function does not work. */
     /** Putting url in the fetch and sending it with body and with token in the header */
     if (tripname && description && amount) {
-      fetch("http://192.168.1.3:8080/expense/add", {
+      fetch("http://localhost:8080/expense/add", {
         method: "POST", //This is a Post request
         headers: {
           "Content-Type": "application/json",

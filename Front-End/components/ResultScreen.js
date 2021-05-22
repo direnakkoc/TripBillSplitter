@@ -10,7 +10,7 @@ export default function ResultScreen({ route,navigation }) {
   /** When page opens, useEffect renders and brings result to the page */
   useEffect(() => {
     /** Putting url in the fetch and sending it with token in the header to get result */
-    fetch("http://192.168.1.3:8080/" + tripname + "/result/" + username, {
+    fetch("http://localhost:8080/" + tripname + "/result/" + username, {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,

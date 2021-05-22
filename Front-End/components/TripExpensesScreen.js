@@ -7,8 +7,7 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
-  LogBox
+  TouchableOpacity
 } from "react-native";
 
 const wait = (timeout) => {
@@ -24,7 +23,6 @@ export default function TripExpensesScreen({ route, navigation }) {
   /** When page opens, useEffect renders and brings all of the expenses in trip */
   useEffect(() => {
     getAllExpenses();
-    LogBox.ignoreAllLogs(); //Hiding yellow warning message :) which was given on phone
   }, []);
   /** function for going to Result page with username,trip name and token parameters */
   function getResult() {
@@ -46,7 +44,7 @@ export default function TripExpensesScreen({ route, navigation }) {
   /** If tripname is empty, function does not work. */
   function closeTrip() {
     if (tripname) {
-      fetch("http://192.168.1.3:8080/" + tripname + "/close", {
+      fetch("http://localhost:8080/" + tripname + "/close", {
         method: "POST", //This is a Post request
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +61,7 @@ export default function TripExpensesScreen({ route, navigation }) {
   }
   /** function to get all the expenses in the trip */
   function getAllExpenses() {
-    fetch("http://192.168.1.3:8080/expenses/" + tripname + "/" + username, {
+    fetch("http://localhost:8080/expenses/" + tripname + "/" + username, {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,

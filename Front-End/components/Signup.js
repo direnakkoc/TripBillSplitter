@@ -21,7 +21,7 @@ export default function Signup({ navigation }) {
       if (password == repeatedPassword) {
         /** Putting url and parameters to the fetch to register */
         fetch(
-          "http://192.168.1.3:8080/users/add?username=" +
+          "http://localhost:8080/users/add?username=" +
             username +
             "&password=" +
             password,

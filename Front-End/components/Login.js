@@ -17,7 +17,7 @@ export default function Login({ navigation }) {
     if (username && password) {
       /** Putting url and parameters to the fetch to login */
       fetch(
-        "http://192.168.1.3:8080/login?username=" +
+        "http://localhost:8080/login?username=" +
           username +
           "&password=" +
           password
