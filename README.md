@@ -101,4 +101,4 @@ npm install react-native-vector-icons/FontAwesome
 </p>
 
 ## :pencil2: Creater 
-:sunglasses: <h4>Diren AKKOC DEMIR - <a href="https://github.com/direnakkocdemir">GITHUB</a> - drnakkoc94@gmail.com</h4>
+<h4>:sunglasses:  Diren AKKOC DEMIR - <a href="https://github.com/direnakkocdemir">GITHUB</a> - drnakkoc94@gmail.com</h4>
