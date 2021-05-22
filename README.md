@@ -9,8 +9,8 @@
 
 Integrated assignment Cloud Based Web Application, Algorithms & Constructs and Mobile Development
 
-<!-- Getting Start -->
-## :pushpin: Getting Started
+<!-- About -->
+## :pushpin: About
 
 An exemplary project for **Bill Splitter**, which is prepared with N-Layered architecture, CRUD operations are performed using In-Memory Database and works with the React-Native framework.
 
@@ -50,78 +50,42 @@ It is the API surface layer where your project will communicate with Front-End F
     <img src="https://github.com/direnakkocdemir/TripBillSplitter/blob/main/ReadMeImages/controller.png" alt="Controller">
 </p>
 
-<!-- Photos of the Components -->
-## Overview
-
-
-
 <!-- Getting Start-->
-## Getting Start
+## :dance: Getting Start
 
 ### Prerequisites
+This project will present the implementation of the TripApplication with the help of;
+* [Java Programming Language]
+* [Eclipse IDE]
+* [Postman Software]
+* [Spring Framework]
+* [Visual Studio IDE]
+* [React Native Framework]
+* [Expo Platform]
 
-Requirements for implementation Module Camera:
-
-* [Node.js]
-* [Visual Studio Code]
-* [React Native]
-* [Expo.io]
-
-
-### Configure for Android
-
-This package automatically adds the CAMERA permission to your app. If you want to record videos with audio, you have to include the RECORD_AUDIO.
-
-
-
-### Installation Modules
-
-Installation -Package-
+### Installation For Front-End
 
 1. 
 ```sh
-expo install expo-camera
+npm install @react-navigation/native
 ```
 2. 
 ```sh
-expo install expo-permissions
+npm install @react-navigation/stack
 ```
 3. 
 ```sh
-npm install react-native-vector-icons/FontAwesome
+npm install @wwdrew/react-native-numeric-textinput
 ```
 4. 
 ```sh
-expo install expo-media-library
+npm install react-native-vector-icons/FontAwesome
 ```
 
-5. 
-```sh
-npm install expo-image-picker
-```
+<!-- Photos of the Components -->
+## :computer: Overview
 
-6. 
-```sh
-expo install react-native-paper
-```
 
-7. 
-```sh
-npm install react-native-flat-button --save
-```
-
-8. 
-```sh
-npm install @react-navigation/native
-```
-## 💙 The Team
-<!--Contact -->
-## Contact
-<h4>Diren Akkoc Demir - <a href="https://github.com/direnakkocdemir">GITHUB</a> - drnakkoc94@gmail.com</h4>
-<h4>Walter Guimaraes Junior - <a href="https://github.com/WalterGJunior">GITHUB</a> - walterguimaraesjr@gmail.com</h4>
-<h4>Steffany Aseret Roa Canedo - <a href="https://github.com/xexenias">GITHUB</a> - xexenias@gmail.com</h4>
-<h4>Gabriel Climaco Brites Farina - <a href="https://github.com/gakito">GITHUB</a> - farinagabrielcb@gmail.com</h4>
-
-## ❓ FAQ 
+## :pencil2: Creater 
  Have you have any question?
-
+<h4>Diren AKKOC DEMIR - <a href="https://github.com/direnakkocdemir">GITHUB</a> - drnakkoc94@gmail.com</h4>
