@@ -48,7 +48,7 @@ public class ExpenseManager implements IExpenseService {
 	public IResult add(Expense expense) {
 		// Checking criteria. If there is any mismatching, result returns success is
 		// false with/without message
-		var result = Utils.BusinessRules(checkTripIsExisted(expense.getTrip().getTripname()),
+		IResult result = Utils.BusinessRules(checkTripIsExisted(expense.getTrip().getTripname()),
 				checkTripsStatus(expense.getTrip().getTripname()),
 				checkUserInTrip(expense.getUser().getUsername(), expense.getTrip().getTripname().toUpperCase()));
 		// If result is true save the expense
@@ -72,10 +72,10 @@ public class ExpenseManager implements IExpenseService {
 	public IResult delete(int id, String tripname) {
 		// Checking criteria. If there is any mismatching, result returns success is
 		// false with/without message
-		var result = Utils.BusinessRules(checkExpenseExisted(id), checkTripsStatus(tripname));
+		IResult result = Utils.BusinessRules(checkExpenseExisted(id), checkTripsStatus(tripname));
 		// If result is true delete the expense
 		if (result.getSuccess()) {
-			var expenseToDelete = expenseDao.get(id);
+			Expense expenseToDelete = expenseDao.get(id);
 			expenseDao.delete(expenseToDelete);
 			return new SuccessResult(Message.ExpenseDeleted); // return successful result with defined message
 		}
@@ -92,7 +92,7 @@ public class ExpenseManager implements IExpenseService {
 	public IResult update(Expense expense) {
 		// Checking criteria. If there is any mismatching, result returns success is
 		// false with/without message
-		var result = Utils.BusinessRules(checkExpenseExisted(expense.getExpenseId()),
+		IResult result = Utils.BusinessRules(checkExpenseExisted(expense.getExpenseId()),
 				checkTripIsExisted(expense.getTrip().getTripname()), checkTripsStatus(expense.getTrip().getTripname()));
 		// If result is true update the expense
 		if (result.getSuccess()) {
@@ -110,7 +110,7 @@ public class ExpenseManager implements IExpenseService {
 	@Override
 	public IDataResult<List<Expense>> getAll() {
 		// Getting all the expenses
-		var result = expenseDao.findAll();
+		List<Expense> result = expenseDao.findAll();
 		// If there are any expenses return true
 		if (!result.isEmpty()) {
 			// return successful result and data with defined message
@@ -132,11 +132,11 @@ public class ExpenseManager implements IExpenseService {
 	public IDataResult<List<Expense>> getAllByTrip(String username, String tripname) {
 		// Checking criteria. If there is any mismatching, result returns success is
 		// false with/without message
-		var result = Utils.BusinessRules(checkUserInTrip(username, tripname), checkTripIsExisted(tripname));
+		IResult result = Utils.BusinessRules(checkUserInTrip(username, tripname), checkTripIsExisted(tripname));
 		// If result is true get the expenses
 		if (result.getSuccess()) {
 			// Getting all the expenses
-			var expenses = expenseDao.findAll();
+			List<Expense> expenses = expenseDao.findAll();
 			List<Expense> tripExpenses = new ArrayList<>(); // Creating an instance of expense class
 			// Loops for all the expenses
 			for (Expense expense : expenses) {
@@ -162,7 +162,7 @@ public class ExpenseManager implements IExpenseService {
 	@Override
 	public IDataResult<List<Expense>> getAllByUser(String username) {
 		// Getting all the expenses
-		var expenses = expenseDao.findAll();
+		List<Expense> expenses = expenseDao.findAll();
 		List<Expense> result = new ArrayList<>();// Creating an instance of expense class
 		// Loops for all the expenses
 		for (Expense expense : expenses) {
@@ -186,13 +186,13 @@ public class ExpenseManager implements IExpenseService {
 	public IDataResult<List<ExpenseDetail>> getResult(String username, String tripname) {
 		// Checking criteria. If there is any mismatching, result returns success is
 		// false with/without message
-		var result = Utils.BusinessRules(checkUserInTrip(username, tripname), checkTripIsExisted(tripname));
+		IResult result = Utils.BusinessRules(checkUserInTrip(username, tripname), checkTripIsExisted(tripname));
 		// If result is true get the result
 		if (result.getSuccess()) {
 			// Get all expenses in the trip
-			var tripExpenses = getAllByTripname(tripname);
+			List<Expense> tripExpenses = getAllByTripname(tripname);
 			// Get all users in the trip
-			var users = getUsernamesInTrip(tripname);
+			List<String> users = getUsernamesInTrip(tripname);
 			// Creating an instance of list of expense detail class
 			List<ExpenseDetail> details = new ArrayList<>();
 			// Getting per person expense result
@@ -231,7 +231,7 @@ public class ExpenseManager implements IExpenseService {
 	public IDataResult<Map<String, Double>> getSummary(String username, String tripname) {
 		// Checking criteria. If there is any mismatching, result returns success is
 		// false with/without message
-		var result = Utils.BusinessRules(checkUserInTrip(username, tripname), checkTripIsExisted(tripname),checkExpense(tripname));
+		IResult result = Utils.BusinessRules(checkUserInTrip(username, tripname), checkTripIsExisted(tripname),checkExpense(tripname));
 		
 		// If result is true get the result
 		if (result.getSuccess()) {
@@ -259,7 +259,7 @@ public class ExpenseManager implements IExpenseService {
 	@Override
 	public IDataResult<Double> getUserSummary(String username) {
 		// Getting all of the expense
-		var expenses = expenseDao.findAll();
+		List<Expense> expenses = expenseDao.findAll();
 		double total = 0; // Assuming total is 0
 		// Loop for expenses
 		for (Expense expense : expenses) {
@@ -282,7 +282,7 @@ public class ExpenseManager implements IExpenseService {
 	 */
 	private double getHighestExpense(String tripname) {
 		// Getting all of the expenses in the trip
-		var tripExpenses = getAllByTripname(tripname);
+		List<Expense> tripExpenses = getAllByTripname(tripname);
 		// Assuming highest is 0
 		double highest = 0;
 		// Loop for expenses
@@ -303,7 +303,7 @@ public class ExpenseManager implements IExpenseService {
 	 */
 	private double getTotalAmount(String tripname) {
 		// Getting all of the expenses in the trip
-		var tripExpenses = getAllByTripname(tripname);
+		List<Expense> tripExpenses = getAllByTripname(tripname);
 		// Assuming total amount is 0
 		double totalAmount = 0;
 		// Loop for expenses
@@ -322,7 +322,7 @@ public class ExpenseManager implements IExpenseService {
 	 */
 	private double getNumberOfPurchases(String tripname) {
 		// Getting all of the expenses in the trip
-		var tripExpenses = getAllByTripname(tripname);
+		List<Expense> tripExpenses = getAllByTripname(tripname);
 		// Getting size of the expense list
 		double purchases = tripExpenses.size();
 		return purchases;
@@ -336,7 +336,7 @@ public class ExpenseManager implements IExpenseService {
 	 */
 	private double getLowestExpense(String tripname) {
 		// Getting all of the expenses in the trip
-		var tripExpenses = getAllByTripname(tripname);
+		List<Expense> tripExpenses = getAllByTripname(tripname);
 		// Assuming lowest price is the first of the list
 		double lowestExpense = tripExpenses.get(0).getExpenseAmount();
 		// Loop for expenses
@@ -358,9 +358,9 @@ public class ExpenseManager implements IExpenseService {
 	 */
 	private double getAverageExpense(String tripname) {
 		// Getting total amount to count the average
-		var totalAmount = getTotalAmount(tripname);
+		Double totalAmount = getTotalAmount(tripname);
 		// Getting number of purchase to count the average
-		var numberOfPurchases = getNumberOfPurchases(tripname);
+		Double numberOfPurchases = getNumberOfPurchases(tripname);
 		return totalAmount / numberOfPurchases;
 	}
 
@@ -384,7 +384,7 @@ public class ExpenseManager implements IExpenseService {
 	 */
 	private List<Expense> getAllByTripname(String tripname) {
 		// Getting all the expenses
-		var expenses = expenseDao.findAll();
+		List<Expense> expenses = expenseDao.findAll();
 		// Creating an instance of list of expense class
 		List<Expense> tripExpenses = new ArrayList<>();
 		// Loop for expenses
@@ -446,7 +446,7 @@ public class ExpenseManager implements IExpenseService {
 	 */
 	private IResult checkTripIsExisted(String tripname) {
 		// Get all of the trips
-		var trips = tripDao.findAll();
+		List<Trip> trips = tripDao.findAll();
 		// Loop for trips
 		for (Trip trip : trips) {
 			// If tripname matches with tripname which user defined, return successful
@@ -468,7 +468,7 @@ public class ExpenseManager implements IExpenseService {
 	 */
 	private IResult checkUserInTrip(String username, String tripname) {
 		// Getting usernames in trip which user defined
-		var usernames = tripDao.get(tripname.toUpperCase()).getUsernames();
+		List<String> usernames = tripDao.get(tripname.toUpperCase()).getUsernames();
 		// Loop for usernames
 		for (String u : usernames) {
 			// If usernames match, return successful result
@@ -485,7 +485,7 @@ public class ExpenseManager implements IExpenseService {
 	 * @return Success of result with/without message
 	 */
 	private IResult checkExpense(String tripname) {
-		var expenses = getAllByTripname(tripname);
+		List<Expense> expenses = getAllByTripname(tripname);
 		if(expenses.size()>0) {
 			return new SuccessResult();
 		}

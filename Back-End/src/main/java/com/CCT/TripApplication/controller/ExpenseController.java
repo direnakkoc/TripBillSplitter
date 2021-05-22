@@ -19,6 +19,8 @@ import com.CCT.TripApplication.business.abstracts.IUserService;
 import com.CCT.TripApplication.entities.Expense;
 import com.CCT.TripApplication.entities.DTO.ExpenseDetail;
 import com.CCT.TripApplication.core.JWTIssuer;
+import com.CCT.TripApplication.core.results.IDataResult;
+import com.CCT.TripApplication.core.results.IResult;
 
 import io.jsonwebtoken.Claims;
 
@@ -55,7 +57,7 @@ public class ExpenseController {
 		// Checking token is valid or not
 		if (checkingToken(token)) {
 			// Sending expense to business layer to add to the database
-			var result = expenseService.add(expense);
+			IResult result = expenseService.add(expense);
 			// If result is successful, returns message and Ok status
 			if (result.getSuccess()) {
 				return new ResponseEntity<String>(result.getMessage(), HttpStatus.OK);
@@ -83,7 +85,7 @@ public class ExpenseController {
 		if (checkingToken(token)) {
 			// Sending expense's id and trip name to business layer to delete from the
 			// system
-			var result = expenseService.delete(id, tripname);
+			IResult result = expenseService.delete(id, tripname);
 			// If result is successful, returns message and Ok status
 			if (result.getSuccess()) {
 				return new ResponseEntity<String>(result.getMessage(), HttpStatus.OK);
@@ -108,7 +110,7 @@ public class ExpenseController {
 		// Checking token is valid or not
 		if (checkingToken(token)) {
 			// Sending expense to business layer to update
-			var result = expenseService.update(expense);
+			IResult result = expenseService.update(expense);
 			// If result is successful, returns message and Ok status
 			if (result.getSuccess()) {
 				return new ResponseEntity<String>(result.getMessage(), HttpStatus.OK);
@@ -131,7 +133,7 @@ public class ExpenseController {
 		// Checking token is valid or not
 		if (checkingToken(token)) {
 			// Getting result from the business layer
-			var result = expenseService.getAll();
+			IDataResult<List<Expense>> result = expenseService.getAll();
 			// If result is successful and there is any expense, returns list of expense and
 			// Ok status
 			if (result.getSuccess()) {
@@ -159,7 +161,7 @@ public class ExpenseController {
 		// Checking token is valid or not
 		if (checkingToken(token)) {
 			// Getting result from the business layer
-			var result = expenseService.getAllByTrip(username, tripname);
+			IDataResult<List<Expense>> result = expenseService.getAllByTrip(username, tripname);
 			// If result is successful and there is any expense in trip, returns list of
 			// expense and Ok status
 			if (result.getSuccess()) {
@@ -187,7 +189,7 @@ public class ExpenseController {
 		// Checking token is valid or not
 		if (checkingToken(token)) {
 			// Getting result from the business layer
-			var result = expenseService.getResult(username, tripname);
+			IDataResult<List<ExpenseDetail>> result = expenseService.getResult(username, tripname);
 			// If result is successful, returns list of expense detail and Ok status
 			if (result.getSuccess()) {
 				return new ResponseEntity<List<ExpenseDetail>>(result.getData(), HttpStatus.OK);
@@ -214,7 +216,7 @@ public class ExpenseController {
 		// Checking token is valid or not
 		if (checkingToken(token)) {
 			// Getting result from the business layer
-			var result = expenseService.getAllByUser(username);
+			IDataResult<List<Expense>> result = expenseService.getAllByUser(username);
 			// If result is successful, returns list of expense and Ok status
 			if (result.getSuccess()) {
 				return new ResponseEntity<List<Expense>>(result.getData(), HttpStatus.OK);
@@ -242,7 +244,7 @@ public class ExpenseController {
 		// Checking token is valid or not
 		if (checkingToken(token)) {
 			// Getting result from the business layer
-			var result = expenseService.getSummary(username, tripname);
+			IDataResult<Map<String, Double>> result = expenseService.getSummary(username, tripname);
 			// If result is successful, returns map which includes summary of the trip and
 			// Ok status
 			if (result.getSuccess()) {
@@ -269,7 +271,7 @@ public class ExpenseController {
 		// Checking token is valid or not
 		if (checkingToken(token)) {
 			// Getting result from the business layer
-			var result = expenseService.getUserSummary(username);
+			IDataResult<Double> result = expenseService.getUserSummary(username);
 			// If result is successful, returns total of user's expenses and Ok status
 			if (result.getSuccess()) {
 				return new ResponseEntity<Double>(result.getData(), HttpStatus.OK);

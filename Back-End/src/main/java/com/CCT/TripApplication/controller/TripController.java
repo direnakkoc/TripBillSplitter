@@ -17,6 +17,8 @@ import com.CCT.TripApplication.business.abstracts.ITripService;
 import com.CCT.TripApplication.business.abstracts.IUserService;
 import com.CCT.TripApplication.entities.Trip;
 import com.CCT.TripApplication.core.JWTIssuer;
+import com.CCT.TripApplication.core.results.IDataResult;
+import com.CCT.TripApplication.core.results.IResult;
 
 import io.jsonwebtoken.Claims;
 
@@ -53,7 +55,7 @@ public class TripController {
 		// Checking token is valid or not
 		if (checkingToken(token)) {
 			// Sending trip to business layer to add to the database
-			var result = tripService.add(trip);
+			IResult result = tripService.add(trip);
 			// If result is successful, returns message and Ok status
 			if (result.getSuccess()) {
 				return new ResponseEntity<>(result.getMessage(), HttpStatus.OK);
@@ -75,7 +77,7 @@ public class TripController {
 	public ResponseEntity<List<Trip>> getAll(@RequestHeader(name = "Authorization", required = true) String token) {
 		// Checking token is valid or not
 		if (checkingToken(token)) {
-			var result = tripService.getAll();
+			IDataResult<List<Trip>> result = tripService.getAll();
 			// If result is successful and there is any trip, returns list of trip and
 			// Ok status
 			if (result.getSuccess()) {
@@ -101,7 +103,7 @@ public class TripController {
 			@PathVariable(name = "tripname") String tripname) {
 		// Checking token is valid or not
 		if (checkingToken(token)) {
-			var result = tripService.closeTrip(tripname);
+			IResult result = tripService.closeTrip(tripname);
 			// If result is successful, returns message and Ok status
 			if (result.getSuccess()) {
 				return new ResponseEntity<>(result.getMessage(), HttpStatus.OK);
@@ -129,7 +131,7 @@ public class TripController {
 			@PathVariable(name = "tripname") String tripname, @PathVariable(name = "username") String username) {
 		// Checking token is valid or not
 		if (checkingToken(token)) {
-			var result = tripService.joinTrip(tripname, username);
+			IResult result = tripService.joinTrip(tripname, username);
 			// If result is successful, returns message and Ok status
 			if (result.getSuccess()) {
 				return new ResponseEntity<>(result.getMessage(), HttpStatus.OK);
@@ -151,7 +153,7 @@ public class TripController {
 			@PathVariable(name = "tripname") String tripname) {
 		// Checking token is valid or not
 		if (checkingToken(token)) {
-			var result = tripService.checkTrip(tripname);
+			IResult result = tripService.checkTrip(tripname);
 			// If result is successful, returns message and Ok status
 			if (result.getSuccess()) {
 				return new ResponseEntity<>(result.getMessage(), HttpStatus.OK);

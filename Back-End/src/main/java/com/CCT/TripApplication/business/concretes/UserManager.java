@@ -39,7 +39,7 @@ public class UserManager implements IUserService {
 	@Override
 	public IResult login(String username, String password) {
 		// Getting all of the users
-		var users = userDao.findAll();
+		List<User> users = userDao.findAll();
 		// Loop for users to check
 		for (User u : users) {
 			// If usernames match and user passwords match, return successful result
@@ -62,7 +62,7 @@ public class UserManager implements IUserService {
 	@Override
 	public IResult add(String username, String password) {
 		// Checking some criteria to register
-		var result = Utils.BusinessRules(checkUserExisted(username), checkUsernameMoreThan2Letter(username),
+		IResult result = Utils.BusinessRules(checkUserExisted(username), checkUsernameMoreThan2Letter(username),
 				checkPasswordIsMoreThan6Char(password));
 		// If result is successful, add the user to the system
 		if (result.getSuccess()) {
@@ -126,7 +126,7 @@ public class UserManager implements IUserService {
 	@Override
 	public IDataResult<List<User>> getAll() {
 		// Getting list of user
-		var result = userDao.findAll();
+		List<User> result = userDao.findAll();
 		// If list is empty, return error result with message
 		if (result.isEmpty()) {
 			return new ErrorDataResult<List<User>>(Message.usersNotFound);
@@ -162,7 +162,7 @@ public class UserManager implements IUserService {
 	@Override
 	public IResult checkUser(String username) {
 		// Getting all of the users
-		var users = userDao.findAll();
+		List<User> users = userDao.findAll();
 		// Loop for users
 		for (User user : users) {
 			// If usernames match, return successful result
@@ -183,7 +183,7 @@ public class UserManager implements IUserService {
 	 */
 	private IResult checkUserExisted(String username) {
 		// Getting all of the users
-		var users = userDao.findAll();
+		List<User> users = userDao.findAll();
 		// Loop for users
 		for (User user : users) {
 			// If usernames match, return error result with message

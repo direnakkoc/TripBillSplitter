@@ -16,7 +16,7 @@ public class Utils {
 	 */
 	public static IResult BusinessRules(IResult... rules) {
 		// Loop for given rules
-		for (var r : rules) {
+		for (IResult r : rules) {
 			// If result is false we should return proper error with it's message
 			if (!r.getSuccess()) {
 				return new ErrorResult(r.getMessage());

@@ -110,7 +110,7 @@ public class MemoryTripDao implements TripDao {
 	 */
 	@Override
 	public void join(String tripname, String username) {
-		var trip = get(tripname.toUpperCase()); // Bringing the trip which user will join
+		Trip trip = get(tripname.toUpperCase()); // Bringing the trip which user will join
 		trip.getUsernames().add(username); // Add the user to the trip
 	}
 

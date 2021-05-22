@@ -40,11 +40,11 @@ public class TripManager implements ITripService {
 	public IResult closeTrip(String tripname) {
 		// Checking criteria. If there is any mismatching, result returns success is
 		// false with/without message
-		var result = Utils.BusinessRules(checkTripIsCreated(tripname));
+		IResult result = Utils.BusinessRules(checkTripIsCreated(tripname));
 		// If result is true returns close the trip
 		if (result.getSuccess()) {
 			// Getting the trip which will be changed
-			var trip = tripDao.get(tripname.toUpperCase());
+			Trip trip = tripDao.get(tripname.toUpperCase());
 			// Setting the trip status false (closed)
 			trip.setTripStatus(false);
 			tripDao.update(trip);
@@ -65,7 +65,7 @@ public class TripManager implements ITripService {
 	public IResult add(Trip trip) {
 		// Checking criteria. If there is any mismatching, result returns success is
 		// false with/without message
-		var result = Utils.BusinessRules(checkTripIsExisted(trip.getTripname()));
+		IResult result = Utils.BusinessRules(checkTripIsExisted(trip.getTripname()));
 		// If method pass the criteria, add the trip to the system
 		if (result.getSuccess()) {
 			// All the trip names are saving as upper case to the system
@@ -88,7 +88,7 @@ public class TripManager implements ITripService {
 	public IResult delete(String tripname) {
 		// Checking criteria. If there is any mismatching, result returns success is
 		// false with/without message
-		var result = Utils.BusinessRules(checkTripIsCreated(tripname));
+		IResult result = Utils.BusinessRules(checkTripIsCreated(tripname));
 		// If method pass the criteria, delete the trip from the system
 		if (result.getSuccess()) {
 			// Getting the trip which will be deleted from the system
@@ -111,7 +111,7 @@ public class TripManager implements ITripService {
 	public IResult update(Trip trip) {
 		// Checking criteria. If there is any mismatching, result returns success is
 		// false with/without message
-		var result = Utils.BusinessRules(checkTripIsExisted(trip.getTripname()));
+		IResult result = Utils.BusinessRules(checkTripIsExisted(trip.getTripname()));
 		// If method pass the criteria, update the trip
 		if (result.getSuccess()) {
 			// Getting the trip which will be updated
@@ -138,7 +138,7 @@ public class TripManager implements ITripService {
 	public IResult joinTrip(String tripname, String username) {
 		// Checking criteria. If there is any mismatching, result returns success is
 		// false with/without message
-		var result = Utils.BusinessRules(checkTripIsCreated(tripname), checkUserIsInTrip(tripname, username),
+		IResult result = Utils.BusinessRules(checkTripIsCreated(tripname), checkUserIsInTrip(tripname, username),
 				checkTripIsActive(tripname));
 		// If method pass the criteria, user will be added to the system
 		if (result.getSuccess()) {
@@ -158,7 +158,7 @@ public class TripManager implements ITripService {
 	@Override
 	public IDataResult<List<Trip>> getAll() {
 		// Getting all trips in the system
-		var result = tripDao.findAll();
+		List<Trip> result = tripDao.findAll();
 		// If there is no trip , return error result with message
 		if (result.isEmpty()) {
 			return new ErrorDataResult<List<Trip>>(Message.ExpensesNotFound);
@@ -253,7 +253,7 @@ public class TripManager implements ITripService {
 	 */
 	private IResult checkUserIsInTrip(String tripname, String username) {
 		// Getting usernames which are in trip
-		var tripUsernames = tripDao.get(tripname.toUpperCase()).getUsernames();
+		List<String> tripUsernames = tripDao.get(tripname.toUpperCase()).getUsernames();
 		// Loop for usernames
 		for (String u : tripUsernames) {
 			// If usernames are match, return error result with message
@@ -273,7 +273,7 @@ public class TripManager implements ITripService {
 	 */
 	private IResult checkTripIsActive(String tripname) {
 		// Getting trip which user wants
-		var trip = tripDao.get(tripname.toUpperCase());
+		Trip trip = tripDao.get(tripname.toUpperCase());
 		// If trip is active, return successful result
 		if (trip.isTripStatus()) {
 			return new SuccessResult();
