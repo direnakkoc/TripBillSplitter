@@ -39,5 +39,6 @@ public class Message {
 	public static String TripIsNotActive = "Error: Trip is not active anymore.";
 	public static String TripIsNotExisted = "Error: This trip is not existed in the system";
 	public static String ThisTripNameUsed = "Error: This trip name is used. Please, join the trip";
+	public static String TripIsActive = "Trip is active";
 
 }

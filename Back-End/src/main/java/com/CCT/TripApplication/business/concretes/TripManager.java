@@ -184,7 +184,7 @@ public class TripManager implements ITripService {
 			for (Trip trip : trips) {
 				// If tripnames matches, return error result with message
 				if (trip.getTripname().equalsIgnoreCase(tripname)) {
-					return new SuccessResult();
+					return new SuccessResult(Message.TripIsActive);
 				}
 			}
 		}
